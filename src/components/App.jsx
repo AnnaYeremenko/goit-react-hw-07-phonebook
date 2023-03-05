@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-
+import { selectError, selectIsLoading } from 'redux/contactsSlice';
+import { fetchContacts } from 'redux/operations';
 
 
 export const App = () => {
@@ -31,6 +32,7 @@ export const App = () => {
         <ContactForm />
         <h2>Contacts</h2>
         <Filter />
+        {isLoading && !error && <b>Request in progress...</b>}
         <ContactList/>
     </div>
   );
